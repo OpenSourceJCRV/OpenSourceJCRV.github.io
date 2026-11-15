@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juan Carlos Rios | Senior Backend Software Engineer</title>
+    <meta name="description" content="Senior Backend Software Engineer especializado en Java, Spring Boot, Quarkus, Apache Kafka y arquitecturas Cloud en AWS y Azure." />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        navy: '#0f172a',
+                        slate: {
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        teal: {
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Efecto Spotlight del cursor */
+        .spotlight {
+            background: radial-gradient(600px at var(--x, 50%) var(--y, 50%), rgba(29, 78, 216, 0.12), transparent 80%);
+        }
+        /* Indicador de navegación activo */
+        .nav-link.active .nav-indicator {
+            width: 4rem;
+            background-color: #e2e8f0;
+        }
+        .nav-link.active .nav-text {
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-400 antialiased selection:bg-teal-300 selection:text-slate-900 relative">
+
+<!-- Capa de iluminación sutil que sigue el cursor -->
+<div id="spotlight" class="pointer-events-none fixed inset-0 z-30 transition duration-300 spotlight"></div>
+
+<div class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+    <div class="lg:flex lg:justify-between lg:gap-4">
+
+        <!-- =========================================================
+             COLUMNA IZQUIERDA (FIJA EN DESKTOP)
+        ========================================================== -->
+        <header class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+            <div>
+                <!-- Nombre y Rol -->
+                <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+                    <a href="/">Juan Carlos Rios</a>
+                </h1>
+                <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+                    Senior Backend Software Engineer
+                </h2>
+                <p class="mt-4 max-w-xs leading-normal text-slate-400">
+                    Diseño sistemas distribuidos resilientes, microservicios de alta disponibilidad en Java y arquitecturas cloud-native.
+                </p>
+
+                <!-- Navegación con Scrollspy (Oculta en móvil, visible en desktop) -->
+                <nav class="nav hidden lg:block" aria-label="In-page jump links">
+                    <ul class="mt-16 w-max">
+                        <li>
+                            <a class="nav-link group flex items-center py-3 active" href="#about">
+                                <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">
+                    Sobre mí
+                  </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link group flex items-center py-3" href="#experience">
+                                <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">
+                    Experiencia
+                  </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link group flex items-center py-3" href="#projects">
+                                <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">
+                    Arquitectura & Proyectos
+                  </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link group flex items-center py-3" href="#writing">
+                                <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">
+                    Notas Técnicas
+                  </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Enlaces Sociales & Contacto -->
+            <ul class="ml-1 mt-8 flex items-center gap-5" aria-label="Social media">
+                <li>
+                    <a class="block hover:text-slate-200 transition-colors" href="https://github.com/tu-usuario" target="_blank" rel="noreferrer" aria-label="GitHub">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="block hover:text-slate-200 transition-colors" href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="block hover:text-slate-200 transition-colors" href="mailto:tu.correo@ejemplo.com" aria-label="Email">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="/cv-juan-carlos-rios.pdf" target="_blank" class="inline-flex items-center gap-1.5 rounded-md border border-teal-300/30 bg-teal-400/10 px-3 py-1.5 text-xs font-mono font-medium text-teal-300 hover:bg-teal-400/20 transition-colors">
+                        Descargar CV
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    </a>
+                </li>
+            </ul>
+        </header>
+
+        <!-- =========================================================
+             COLUMNA DERECHA (CONTENIDO SCROLLABLE)
+        ========================================================== -->
+        <main id="content" class="pt-24 lg:w-1/2 lg:py-24">
+
+            <!-- SECCIÓN: SOBRE MÍ -->
+            <section id="about" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Sobre mí">
+                <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Sobre mí</h2>
+                </div>
+                <div class="space-y-4 leading-relaxed text-slate-400">
+                    <p>
+                        Ingeniero de Software con más de 10 años de experiencia construyendo servicios backend escalables, tolerantes a fallos y orientados a eventos para los sectores financiero, consultoría y educación.
+                    </p>
+                    <p>
+                        Mi enfoque principal está en el ecosistema <span class="text-slate-200 font-medium">Java (Spring Boot, Quarkus)</span>, mensajería asíncrona con <span class="text-slate-200 font-medium">Apache Kafka</span> y despliegue de cargas de trabajo en entornos cloud sobre <span class="text-slate-200 font-medium">AWS y Azure</span>. Disfruto transformar requisitos de negocio complejos en arquitecturas limpias, observables y fáciles de mantener.
+                    </p>
+                    <p>
+                        Actualmente exploro la integración de agentes autónomos de IA en sistemas empresariales utilizando <span class="text-slate-200 font-medium">LangChain4j</span> y el protocolo <span class="text-slate-200 font-medium">MCP (Model Context Protocol)</span>, manteniendo siempre el rigor de la ingeniería de software tradicional.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: EXPERIENCIA -->
+            <section id="experience" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Experiencia laboral">
+                <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Experiencia</h2>
+                </div>
+
+                <ol class="group/list space-y-12">
+                    <!-- Rol 1 -->
+                    <li class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header class="z-10 mb-2 mt-1 text-xs font-mono font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                            2026 — Presente
+                        </header>
+                        <div class="z-10 sm:col-span-6">
+                            <h3 class="font-medium leading-snug text-slate-200">
+                                <div>
+                    <span class="inline-flex items-baseline font-medium leading-tight text-slate-200 group-hover:text-teal-300 transition-colors text-base">
+                      Senior Backend Software Engineer · Banco de Crédito del Perú (BCP)
+                    </span>
+                                </div>
+                            </h3>
+                            <p class="mt-2 text-sm leading-normal text-slate-400">
+                                Diseño y desarrollo de microservicios core de misión crítica bajo arquitecturas distribuidas. Implementación de patrones de resiliencia, procesamiento de eventos de alto rendimiento y estándares de observabilidad en entornos cloud.
+                            </p>
+                            <ul class="mt-3 flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Java 21</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Spring Boot</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Apache Kafka</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">AWS / Azure</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Rol 2 -->
+                    <li class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header class="z-10 mb-2 mt-1 text-xs font-mono font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                            2020 — 2026
+                        </header>
+                        <div class="z-10 sm:col-span-6">
+                            <h3 class="font-medium leading-snug text-slate-200">
+                  <span class="inline-flex items-baseline font-medium leading-tight text-slate-200 group-hover:text-teal-300 transition-colors text-base">
+                    IT Analyst / Backend Engineer · Tata Consultancy Services (TCS)
+                  </span>
+                            </h3>
+                            <p class="mt-2 text-sm leading-normal text-slate-400">
+                                Liderazgo técnico en el desarrollo de APIs RESTful y servicios reactivos para clientes empresariales. Migración de monolitos heredados hacia microservicios contenedorizados, reducción de tiempos de respuesta en consultas críticas y conducción de entrevistas técnicas para desarrolladores Java.
+                            </p>
+                            <ul class="mt-3 flex flex-wrap gap-2">
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Java</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Spring WebFlux</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Quarkus</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Docker & Kubernetes</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Azure</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Rol 3 -->
+                    <li class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header class="z-10 mb-2 mt-1 text-xs font-mono font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                            2018 — 2020
+                        </header>
+                        <div class="z-10 sm:col-span-6">
+                            <h3 class="font-medium leading-snug text-slate-200">
+                  <span class="inline-flex items-baseline font-medium leading-tight text-slate-200 group-hover:text-teal-300 transition-colors text-base">
+                    Analista Programador · everis Perú
+                  </span>
+                            </h3>
+                            <p class="mt-2 text-sm leading-normal text-slate-400">
+                                Desarrollo e integración de servicios backend en Java EE y Spring Framework, automatización de pipelines CI/CD y optimización de consultas SQL en bases de datos relacionales de alto volumen.
+                            </p>
+                            <ul class="mt-3 flex flex-wrap gap-2">
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Java 8/11</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Spring Boot</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Oracle / PostgreSQL</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Jenkins</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- SECCIÓN: ARQUITECTURA & PROYECTOS -->
+            <section id="projects" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Proyectos destacados">
+                <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Arquitectura & Proyectos</h2>
+                </div>
+
+                <ul class="group/list space-y-12">
+                    <!-- Proyecto 1 -->
+                    <li class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+
+                        <!-- Miniatura tipo Diagrama Técnico -->
+                        <div class="z-10 sm:col-span-2 flex items-center justify-center rounded border border-slate-700/80 bg-slate-800/80 p-3 font-mono text-[10px] text-teal-300 leading-tight">
+                            [Client] ➔ [API]<br/>&nbsp;&nbsp;&nbsp;⬇<br/>[Kafka Topic]<br/>&nbsp;&nbsp;&nbsp;⬇<br/>[Outbox Worker]
+                        </div>
+
+                        <div class="z-10 sm:col-span-6">
+                            <h3>
+                                <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://github.com/tu-usuario/event-driven-payment-engine" target="_blank" rel="noreferrer">
+                                    <span>Event-Driven Order & Payment Engine</span>
+                                    <svg class="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </h3>
+                            <p class="mt-2 text-sm leading-normal text-slate-400">
+                                Arquitectura de microservicios desacoplada que implementa el patrón <strong>Transactional Outbox</strong>, idempotencia en consumidores y manejo de Dead Letter Queues (DLQ) para garantizar consistencia eventual sin pérdida de mensajes.
+                            </p>
+                            <ul class="mt-3 flex flex-wrap gap-2">
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Spring Boot 3</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Apache Kafka</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">PostgreSQL</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Testcontainers</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Proyecto 2 -->
+                    <li class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+
+                        <!-- Miniatura tipo Diagrama Técnico -->
+                        <div class="z-10 sm:col-span-2 flex items-center justify-center rounded border border-slate-700/80 bg-slate-800/80 p-3 font-mono text-[10px] text-teal-300 leading-tight">
+                            [Java Agent]<br/>&nbsp;&nbsp;&nbsp;⬍ MCP<br/>[Tools / DB]<br/>&nbsp;&nbsp;&nbsp;⬇<br/>[LLM Router]
+                        </div>
+
+                        <div class="z-10 sm:col-span-6">
+                            <h3>
+                                <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://github.com/tu-usuario/java-mcp-autonomous-agent" target="_blank" rel="noreferrer">
+                                    <span>Enterprise AI Agent Orchestrator (LangChain4j + MCP)</span>
+                                    <svg class="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </h3>
+                            <p class="mt-2 text-sm leading-normal text-slate-400">
+                                Servicio backend nativo en Quarkus que expone herramientas internas mediante Model Context Protocol (MCP) y orquesta flujos agénticos con validación estricta de esquemas JSON, rate-limiting y trazabilidad OpenTelemetry.
+                            </p>
+                            <ul class="mt-3 flex flex-wrap gap-2">
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">Quarkus</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">LangChain4j</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">MCP</li>
+                                <li class="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-mono font-medium text-teal-300">GraalVM Native</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN: NOTAS TÉCNICAS -->
+            <section id="writing" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Notas técnicas">
+                <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Notas Técnicas</h2>
+                </div>
+
+                <ul class="space-y-6">
+                    <li class="group">
+                        <a href="#" class="block rounded-md p-3 -mx-3 transition hover:bg-slate-800/50">
+                            <div class="text-xs font-mono text-slate-500">Nov 2026 · 6 min lectura</div>
+                            <h3 class="mt-1 font-medium text-slate-200 group-hover:text-teal-300 transition-colors">
+                                Virtual Threads (Project Loom) vs WebFlux en producción: Cuándo elegir cada uno
+                            </h3>
+                        </a>
+                    </li>
+                    <li class="group">
+                        <a href="#" class="block rounded-md p-3 -mx-3 transition hover:bg-slate-800/50">
+                            <div class="text-xs font-mono text-slate-500">Sep 2026 · 8 min lectura</div>
+                            <h3 class="mt-1 font-medium text-slate-200 group-hover:text-teal-300 transition-colors">
+                                Implementando el patrón Transactional Outbox con Spring Boot, Debezium y Kafka
+                            </h3>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="max-w-md pb-16 text-xs text-slate-500 sm:pb-0">
+                <p>
+                    Construido con HTML semántico y <span class="text-slate-400">Tailwind CSS</span>. Inspirado en el diseño minimalista de <span class="text-slate-400">Brittany Chiang</span> & <span class="text-slate-400">Nikhil S.</span> Desplegado en Cloudflare Pages.
+                </p>
+            </footer>
+
+        </main>
+    </div>
+</div>
+
+<!-- =========================================================
+     SCRIPTS: SPOTLIGHT CURSOR & SCROLLSPY NAVIGATION
+========================================================== -->
+<script>
+    // 1. Efecto Spotlight siguiendo el mouse
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', (e) => {
+        spotlight.style.setProperty('--x', `${e.clientX}px`);
+        spotlight.style.setProperty('--y', `${e.clientY}px`);
+    });
+
+    // 2. Scrollspy para iluminar la sección activa en la barra lateral
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach((link) => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+</script>
+</body>
+</html>
